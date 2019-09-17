@@ -15,11 +15,13 @@ public class Settings : MonoBehaviour
     protected string CSV_address;
     public GameObject fireware;
     public GameObject stat_text;
+    public GameObject name_text;
     // Start is called before the first frame update
     void Start()
     {
         fireware = GameObject.Find("Fireware_Pnl");
         stat_text = GameObject.Find("Stat_txt");
+        name_text = GameObject.Find("Name_txt");
         stat_text.GetComponent<Text>().text = "wewo";
         fireware.SetActive(false);
         player_active = true;   

@@ -16,8 +16,8 @@ public class Cube_Click : MonoBehaviour
         //txtpnl.SetActive(true);
         //nametext = GameObject.Find("Name_txt").GetComponent<Text>();
         //statetext = GameObject.Find("Stat_txt").GetComponent<Text>();
-        nametext = GameObject.Find("Name_txt");
-        statetext = GameObject.Find("Stat_txt");
+        //nametext = GameObject.Find("Name_txt");
+        //statetext = GameObject.Find("Stat_txt");
         //txtpnl.SetActive(false);
     }
 
@@ -29,8 +29,12 @@ public class Cube_Click : MonoBehaviour
         Debug.Log("[Row: " + this.name.ToString() + "]");
         string encase;
         encase = "[Row: " + this.name.ToString() + "]";
-        nametext.GetComponent<Text>().text =encase;
-        encase= "X: " + this.transform.position.x + "\nY: " + this.transform.position.y + "\nZ: " + this.transform.position.z;
-        statetext.GetComponent<Text>().text = encase;
+        //nametext.GetComponent<Text>().text =encase;
+        txtpnl.GetComponent<Settings>().name_text.GetComponent<Text>().text = encase;
+
+        encase = "X: " + this.transform.position.x + "\nY: " + this.transform.position.y + "\nZ: " + this.transform.position.z;
+        txtpnl.GetComponent<Settings>().stat_text.GetComponent<Text>().text = encase;
+
+        //statetext.GetComponent<Text>().text = encase;
     }
 }
