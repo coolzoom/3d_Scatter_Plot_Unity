@@ -19,7 +19,18 @@ public class Plot_btn_click : MonoBehaviour
     {
         
     }
+
     void plotaway()
+    {
+        if (Settings.player_active)
+        {
+            plotthegraph();
+        }
+       
+    }
+
+
+    void plotthegraph()
     {
 
         for (int x = 0; x < ES.GetComponent<Load_Btn_Click>().plot_points.Length; x++)
@@ -29,17 +40,18 @@ public class Plot_btn_click : MonoBehaviour
             sphere.name = x.ToString();
             sphere.tag = "Spheres";
             sphere.transform.localScale = new Vector3((float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size, (float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size, (float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size);
+            Debug.Log("For X: "+x+"Color is: "+ES.GetComponent<Load_Btn_Click>().plot_points[x].color);
             switch (ES.GetComponent<Load_Btn_Click>().plot_points[x].color)
             {
-                case 1:
+                case 0:
 
                     sphere.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f);
                     break;
-                case 2:
+                case 1:
 
                     sphere.GetComponent<Renderer>().material.color = new Color(0.0f, 1.0f, 0.0f);
                     break;
-                case 3:
+                case 2:
             
                     sphere.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 1.0f);
                     break;

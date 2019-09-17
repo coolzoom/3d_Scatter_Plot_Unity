@@ -16,7 +16,7 @@ public class Load_Btn_Click : MonoBehaviour
     {
         loadbtn = GameObject.Find("Load_btn").GetComponent<Button>();
         loadbtn.onClick.AddListener(readandloadCSV);
-        brain = GameObject.Find("Brain");
+        brain = GameObject.Find("Settings");
     }
 
     // Update is called once per frame
@@ -90,13 +90,13 @@ public class Load_Btn_Click : MonoBehaviour
             {
                 plot_points[x].Z_value = da;
             }
-            if (double.TryParse(elements[3], out da))
+            if (int.TryParse(elements[4], out ia))
             {
-                plot_points[x].X_value = da;
+                plot_points[x].color = ia;
             }
-            if(int.TryParse(elements[4],out ia))
+            if(double.TryParse(elements[3],out da))
             {
-                plot_points[x].size = ia;
+                plot_points[x].size = da;
             }
             /*
             plot_points[x].Y_value = double.Parse(elements[1]);
