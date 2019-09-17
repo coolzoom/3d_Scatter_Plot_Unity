@@ -11,9 +11,11 @@ public class Load_Btn_Click : MonoBehaviour
     private Button loadbtn;
     private GameObject brain;
     public PlotPoint[] plot_points;
+    private Text progress;
     // Start is called before the first frame update
     void Start()
     {
+        progress = GameObject.Find("Progress_txt").GetComponent<Text>();
         loadbtn = GameObject.Find("Load_btn").GetComponent<Button>();
         loadbtn.onClick.AddListener(readandloadCSV);
         brain = GameObject.Find("Settings");
@@ -40,7 +42,14 @@ public class Load_Btn_Click : MonoBehaviour
         ofd.Filter = "CSV file (*.csv) | *.csv";
         if (ofd.ShowDialog()==System.Windows.Forms.DialogResult.OK)
         {
-            brain.GetComponent<Settings>().setaddress(ofd.FileName);            
+            brain.GetComponent<Settings>().setaddress(ofd.FileName);
+            progress.color = Color.black;
+            progress.text = "Reading...";
+        }
+        else
+        {
+            progress.text = "Cancelled...";
+            progress.color = Color.red;
         }
     }
     IEnumerator readCSV()
@@ -73,6 +82,8 @@ public class Load_Btn_Click : MonoBehaviour
         
         for(int x=0;x<lines.Length;x++)
         {
+            progress.color = Color.black;
+            progress.text = "Reading: " + (float)x / lines.Length*100 + "%";
             string[] elements = lines[x].Split(',');
 
             plot_points[x] = new PlotPoint();
@@ -122,6 +133,7 @@ public class Load_Btn_Click : MonoBehaviour
             
         }
         */
+        progress.text = "Done.";
         Settings.player_active = true;
     }
     
