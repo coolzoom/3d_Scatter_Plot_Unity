@@ -5,24 +5,32 @@ using UnityEngine.UI;
 
 public class Cube_Click : MonoBehaviour
 {
-    private Text nametext;
-    private Text statetext;
+    private GameObject nametext;
+    private GameObject statetext;
     private GameObject txtpnl;
 
     // Start is called before the first frame update
     void Start()
     {
-        //txtpnl = GameObject.Find("text_Panel");
-       // txtpnl.SetActive(false);
-       // nametext = GameObject.Find("Name_txt").GetComponent<Text>();
-       // statetext = GameObject.Find("Stats_txt").GetComponent<Text>();
+        txtpnl =GameObject.Find("Settings");
+        //txtpnl.SetActive(true);
+        //nametext = GameObject.Find("Name_txt").GetComponent<Text>();
+        //statetext = GameObject.Find("Stat_txt").GetComponent<Text>();
+        nametext = GameObject.Find("Name_txt");
+        statetext = GameObject.Find("Stat_txt");
+        //txtpnl.SetActive(false);
     }
 
     // Update is called once per frame
     private void OnMouseDown()
     {
         //txtpnl.SetActive(true);
-       // nametext.text = "[Row"+this.name+"]";
-       // statetext.text = "X: "+this.transform.position.x+"\nY: "+this.transform.position.y+"\nZ: "+this.transform.position.z;
+        txtpnl.GetComponent<Settings>().fireware.SetActive(true);
+        Debug.Log("[Row: " + this.name.ToString() + "]");
+        string encase;
+        encase = "[Row: " + this.name.ToString() + "]";
+        nametext.GetComponent<Text>().text =encase;
+        encase= "X: " + this.transform.position.x + "\nY: " + this.transform.position.y + "\nZ: " + this.transform.position.z;
+        statetext.GetComponent<Text>().text = encase;
     }
 }
