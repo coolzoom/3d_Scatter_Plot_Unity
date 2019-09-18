@@ -16,6 +16,7 @@ public class Settings : MonoBehaviour
     public GameObject fireware;
     public GameObject stat_text;
     public GameObject name_text;
+    public GameObject current_node;
     // Start is called before the first frame update
     void Start()
     {
