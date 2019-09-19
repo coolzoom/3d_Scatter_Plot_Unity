@@ -10,6 +10,9 @@ public class Settings : MonoBehaviour
     public static string X_name;
     public static string Y_name;
     public static string Z_name;
+    public float X_slide;
+    public float Y_slide;
+    public float Z_slide;
     public static bool player_active;
     protected double Maxvalue_z;
     protected string CSV_address;
@@ -25,7 +28,10 @@ public class Settings : MonoBehaviour
         name_text = GameObject.Find("Name_txt");
         stat_text.GetComponent<Text>().text = "wewo";
         fireware.SetActive(false);
-        player_active = true;   
+        player_active = true;
+        X_slide = 1;
+        Y_slide = 1;
+        Z_slide = 1;
 
     }
     public void setaddress(string a)
