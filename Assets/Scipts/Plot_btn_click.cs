@@ -46,13 +46,17 @@ public class Plot_btn_click : MonoBehaviour
         for (int x = 0; x < plottedsphere.Length; x++)
         {
             /*
-             //this is a "Lets break the GPU time
+             //uncomment me for a "Lets break the GPU time
             plottedsphere[x].AddComponent<Shatter>();
             StartCoroutine(plottedsphere[x].GetComponent<Shatter>().SplitMesh(true));
             */
             Destroy(plottedsphere[x]);
         }
-        
+        /*
+         plot the data points from the data that was red.
+         plot with respect to X,Y,Z coordinates.
+         size and color from the CSV.
+         */
         for (int x = 0; x < ES.GetComponent<Load_Btn_Click>().plot_points.Length; x++)
         {
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -64,26 +68,31 @@ public class Plot_btn_click : MonoBehaviour
             sphere.tag = "Spheres";
             sphere.transform.localScale = new Vector3((float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size, (float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size, (float)ES.GetComponent<Load_Btn_Click>().plot_points[x].size);
             Debug.Log("For X: "+x+"Color is: "+ES.GetComponent<Load_Btn_Click>().plot_points[x].color);
+            sphere.AddComponent<Cube_Click>();
             switch (ES.GetComponent<Load_Btn_Click>().plot_points[x].color)
             {
                 case 0:
 
                     sphere.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f);
+                    sphere.GetComponent<Cube_Click>().color = "Red";
                     break;
                 case 1:
 
                     sphere.GetComponent<Renderer>().material.color = new Color(0.0f, 1.0f, 0.0f);
+                    sphere.GetComponent<Cube_Click>().color = "Green";
                     break;
                 case 2:
             
                     sphere.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 1.0f);
+                    sphere.GetComponent<Cube_Click>().color = "Blue";
                     break;
             }
-            sphere.AddComponent<Cube_Click>();
+           
             //sphere.AddComponent<Outline>();
             //sphere.GetComponent<Outline>().enabled = true;
             //sphere.AddComponent<(Behaviour)GetComponent("Halo")>();
         }
+        //this is to calculate the avg X,Y,Z coordinates to get the "Center" of the graph and to face the camera there after plotting
         X_avg = X_avg / ES.GetComponent<Load_Btn_Click>().plot_points.Length;
         Y_avg = Y_avg / ES.GetComponent<Load_Btn_Click>().plot_points.Length;
         Z_avg = Z_avg / ES.GetComponent<Load_Btn_Click>().plot_points.Length;

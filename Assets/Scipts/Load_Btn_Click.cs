@@ -5,7 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-
+/*
+This is the load button controller.
+It was designed with the idea to have minimal RAM burden. First idea was to just plot the everything straight.
+However, a requirement was needed that an object to store then was needed. Therefore the design changed.
+*/
 public class Load_Btn_Click : MonoBehaviour
 {
     private Button loadbtn;
@@ -69,7 +73,7 @@ public class Load_Btn_Click : MonoBehaviour
         reader.Close();
         string[] lines = whole.Split('\r');
         //double totallines = (lines.Length / linelength)+1;
-        Debug.Log(lines.Length);
+        //Debug.Log(lines.Length);
         //List<PlotPoint> plot_points = new List<PlotPoint>(lines.Length);
 
         //plot_points.Capacity = lines.Length;
@@ -79,7 +83,9 @@ public class Load_Btn_Click : MonoBehaviour
         //plotter[0] = new PlotPoint();
         //plotter[0].X_value = 33;
         //Debug.Log(plotter[0].X_value);
-        
+        /*
+         Made my own CSV reader.
+         */
         for(int x=0;x<lines.Length;x++)
         {
             progress.color = Color.black;
@@ -115,11 +121,14 @@ public class Load_Btn_Click : MonoBehaviour
             plot_points[x].color = int.Parse(elements[4]);
             plot_points[x].size = double.Parse(elements[3]);
             */
+            /*
+             thread for loading. 
+             */
             yield return new WaitForSeconds(.1f);
 
-            Debug.Log(plot_points[x].X_value + " " + plot_points[x].Y_value + " " + plot_points[x].Z_value + " " + plot_points[x].size + " "+plot_points[x].color + "");
+           // Debug.Log(plot_points[x].X_value + " " + plot_points[x].Y_value + " " + plot_points[x].Z_value + " " + plot_points[x].size + " "+plot_points[x].color + "");
         
-            Debug.Log(elements[0]+" "+elements[1]+" "+ elements[2]+" "+elements[3]+" "+elements[4]);
+           // Debug.Log(elements[0]+" "+elements[1]+" "+ elements[2]+" "+elements[3]+" "+elements[4]);
         }
         /*
         string titles = reader.ReadLine();

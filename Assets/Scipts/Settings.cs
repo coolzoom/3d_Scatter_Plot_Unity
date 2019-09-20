@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+/*
+Settings and "Engine"
+used to store some of the data that needs to be saved
+*/
+
 
 public class Settings : MonoBehaviour
 {
@@ -21,6 +26,10 @@ public class Settings : MonoBehaviour
     public GameObject name_text;
     public GameObject current_node;
     // Start is called before the first frame update
+
+        /*
+         Set and initiate everything.
+         */
     void Start()
     {
         fireware = GameObject.Find("Fireware_Pnl");

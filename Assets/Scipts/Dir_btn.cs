@@ -43,7 +43,9 @@ public class Dir_btn : MonoBehaviour
 
         Directionto(1);
     }
-
+    /*
+     This is to control the buttons on the "Fireware" going up or down in the plotted circles
+     */
     public void Directionto(int direction)
     {
         string row;
