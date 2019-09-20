@@ -18,6 +18,6 @@ Versioning
 We use github for versioning. For the versions available, see the tags on this repository.
 Authors
 
-    Xenji Sarabia - Initial work - 
+    Xenji Sarabia - Initial work - Current Version
 
 
