@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class panelcontrol : MonoBehaviour
 {
-    private GameObject camera;
+    //private GameObject camera;
     // Start is called before the first frame update
     void Start()
     {
-        camera = GameObject.Find("Main Camera");
+      //  camera = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -18,9 +18,9 @@ public class panelcontrol : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray,out hit,Mathf.Infinity))
+            if(Physics.Raycast(ray,out hit,Mathf.Infinity) || EventSystem.current.IsPointerOverGameObject())
             {
-                Debug.Log("you hit" +hit.transform.name);
+               // Debug.Log("you hit" +hit.transform.name);
             }
             else
             {

@@ -27,12 +27,12 @@ public class Settings : MonoBehaviour
         stat_text = GameObject.Find("Stat_txt");
         name_text = GameObject.Find("Name_txt");
         stat_text.GetComponent<Text>().text = "wewo";
-        fireware.SetActive(false);
+        //fireware.SetActive(false);
         player_active = true;
         X_slide = 1;
         Y_slide = 1;
         Z_slide = 1;
-
+        current_node = GameObject.Find("Settings");
     }
     public void setaddress(string a)
     {

@@ -6,18 +6,25 @@ using UnityEngine.UI;
 public class Dir_btn : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Button right;
-    private Button left;
+    private GameObject right;
+    private GameObject left;
     private GameObject settin;
     private GameObject target;
+    private GameObject fireware;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        right = GameObject.Find("Right_btn").GetComponent<Button>();
-        left = GameObject.Find("Left_btn").GetComponent<Button>();
-        right.onClick.AddListener(goright);
-        left.onClick.AddListener(goleft);
+        //right = GameObject.Find("Right_btn").GetComponent<Button>();
+        //left = GameObject.Find("Left_btn").GetComponent<Button>();
+        right = GameObject.Find("Right_btn");
+        left = GameObject.Find("Left_btn");
+        right.GetComponent<Button>().onClick.AddListener(goright);
+        left.GetComponent<Button>().onClick.AddListener(goleft);
         settin = GameObject.Find("Settings");
+        fireware = GameObject.Find("Fireware_Pnl");
+        fireware.gameObject.SetActive(false);
+        player = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -42,12 +49,16 @@ public class Dir_btn : MonoBehaviour
         string row;
         int  oindex;
         row = settin.GetComponent<Settings>().current_node.name;
-        Debug.Log("row is: " + row);
+        settin.GetComponent<Settings>().current_node.GetComponent<Cube_Click>().blinks=false;
+        settin.GetComponent<Settings>().current_node.GetComponent<MeshRenderer>().enabled = true;
+       Debug.Log("row is: " + row);
         if (int.TryParse(row, out oindex))
         {
             oindex=oindex + direction;
             row = oindex.ToString();
             target = GameObject.Find(row);
+            target.GetComponent<Cube_Click>().blinks=true;
+            player.transform.LookAt(target.transform);
             Debug.Log("I should be in: " + target.name);
             target.GetComponent<Cube_Click>().showviewer();
         }
